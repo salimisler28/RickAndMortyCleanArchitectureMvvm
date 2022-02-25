@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Rick And Morty Clean Architecture Mvvm"
-include ':app'
+include ':presentation'
