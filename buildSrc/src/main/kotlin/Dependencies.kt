@@ -21,6 +21,10 @@ object Dependencies {
         const val dataStore = "androidx.datastore:datastore-preferences:1.0.0"
         const val gson = "com.google.code.gson:gson:2.8.9"
         const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-rc01"
+        const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+        const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:2.9.0"
+        const val okHttp = "com.squareup.okhttp3:okhttp:4.9.3"
+        const val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.9.3"
 
         object Compose {
             const val ui = "androidx.compose.ui:ui:1.0.5"

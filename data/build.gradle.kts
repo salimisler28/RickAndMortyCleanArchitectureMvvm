@@ -19,10 +19,13 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String", "BASE_URL", "https://rickandmortyapi.com/api")
         }
     }
     compileOptions {
@@ -50,5 +53,10 @@ dependencies {
     kapt(Dependencies.Kapt.room)
     // Logger
     implementation(Dependencies.Implementation.logger)
-
+    //Retrofit: Apache License, Version 2.0
+    implementation(Dependencies.Implementation.retrofit)
+    implementation(Dependencies.Implementation.retrofitGsonConverter)
+    //OkHttp3: Apache License, Version 2.0
+    implementation(Dependencies.Implementation.okHttp)
+    implementation(Dependencies.Implementation.okHttpLoggingInterceptor)
 }
