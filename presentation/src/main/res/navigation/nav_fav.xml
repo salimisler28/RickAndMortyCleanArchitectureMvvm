@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_fav"
+    app:startDestination="@id/favFragment">
+
+    <fragment
+        android:id="@+id/favFragment"
+        android:name="com.salimisler.rickandmortycleanmvvm.screen.fav.FavFragment"
+        android:label="FavFragment" />
+</navigation>

@@ -1,7 +1,7 @@
 package com.salimisler.data.datasources.remote.api
 
 import com.salimisler.data.network.api.CharacterApi
-import com.salimisler.data.networkCall
+import com.salimisler.data.base.networkCall
 import javax.inject.Inject
 
 class CharactersRemoteDataSource @Inject constructor(

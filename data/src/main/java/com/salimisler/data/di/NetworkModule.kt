@@ -2,6 +2,7 @@ package com.salimisler.data.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.salimisler.data.BuildConfig
+import com.salimisler.data.network.api.CharacterApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,4 +43,8 @@ object NetworkModule {
         .readTimeout(30, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS)
         .build()
+
+    @Provides
+    @Singleton
+    fun provideCharacterApi(retrofit: Retrofit) = retrofit.create(CharacterApi::class.java)
 }

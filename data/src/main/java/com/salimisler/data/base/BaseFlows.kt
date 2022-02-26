@@ -1,4 +1,4 @@
-package com.salimisler.data
+package com.salimisler.data.base
 
 import com.orhanobut.logger.Logger
 import com.salimisler.common.Resource
@@ -10,18 +10,14 @@ import java.lang.Exception
 fun <T> networkCall(
     call: suspend () -> Response<T>,
 ): Flow<Resource<T>> = flow {
-    try {
-        val response = call.invoke()
+    val response = call.invoke()
 
-        if (response.isSuccessful) {
-            emit(Resource.success(response.body()))
-        } else {
-            emit(Resource.error(Exception(message = response.message())))
+    if (response.isSuccessful) {
+        response.body()?.let {
+            emit(Resource.success(it))
         }
-    } catch (e: Exception) {
-        val errorMsg = e
-        Logger.e(errorMsg.localizedMessage)
-        emit(Resource.error(errorMsg))
+    } else {
+        emit(Resource.error(Exception(response.message()), null))
     }
 }.flowOn(Dispatchers.IO).onStart {
     emit(Resource.loading())

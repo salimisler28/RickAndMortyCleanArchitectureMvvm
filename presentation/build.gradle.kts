@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.kotlin)
+    id(Plugins.kapt)
+    id(Plugins.hilt)
 }
 
 android {
@@ -29,15 +31,34 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
+    implementation(project(Modules.common))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
+    implementation(Dependencies.Implementation.core)
+    implementation(Dependencies.Implementation.appCompat)
+    implementation(Dependencies.Implementation.material)
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation(Dependencies.TestImplementation.junit)
+    androidTestImplementation(Dependencies.AndroidTestImplementation.junit)
+    androidTestImplementation(Dependencies.AndroidTestImplementation.espresso)
+
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation(Dependencies.Implementation.ktxViewModel)
+
+    // Hilt
+    implementation(Dependencies.Implementation.hilt)
+    kapt(Dependencies.Kapt.hilt)
+    // Coroutines
+    implementation(Dependencies.Implementation.coroutines)
+    // Nav
+    implementation(Dependencies.Implementation.navigation)
+    implementation(Dependencies.Implementation.ktxNavigation)
 }

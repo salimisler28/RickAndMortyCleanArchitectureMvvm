@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface NickAndMortyApi {
+interface CharacterApi {
     @GET("character")
     suspend fun getAllCharacter(): Response<GetAllCharactersResponse>
 
