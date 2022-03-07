@@ -52,12 +52,12 @@ dependencies {
     // Logger
     implementation(Dependencies.Implementation.logger)
     // Paging 3
-    api(Dependencies.Implementation.paging)
+    implementation(Dependencies.Implementation.paging)
     //Retrofit
-    implementation(Dependencies.Implementation.retrofit)
-    implementation(Dependencies.Implementation.retrofitGsonConverter)
-    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+    api(Dependencies.Implementation.retrofit)
+    api(Dependencies.Implementation.retrofitGsonConverter)
+    api("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
     //OkHttp3
-    implementation(Dependencies.Implementation.okHttp)
-    implementation(Dependencies.Implementation.okHttpLoggingInterceptor)
+    api(Dependencies.Implementation.okHttp)
+    api(Dependencies.Implementation.okHttpLoggingInterceptor)
 }

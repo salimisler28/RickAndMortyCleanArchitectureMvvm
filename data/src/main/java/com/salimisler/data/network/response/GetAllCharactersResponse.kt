@@ -5,5 +5,5 @@ import com.salimisler.data.network.dto.InfoDto
 
 data class GetAllCharactersResponse(
     val info: InfoDto? = null,
-    val result: List<CharacterDto>? = null
+    val results: List<CharacterDto>? = null
 )

@@ -13,4 +13,6 @@ object Versions {
     const val paging = "3.1.0"
     const val hilt = "2.38.1"
     const val navigation = "2.4.1"
+    const val epoxy = "3.9.0"
+    const val epoxyPaging = "4.6.4"
 }

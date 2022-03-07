@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -23,7 +24,7 @@ object NetworkModule {
         coroutineCallAdapterFactory: CoroutineCallAdapterFactory,
         httpClient: OkHttpClient
     ) = Retrofit.Builder()
-        .baseUrl("https://rickandmortyapi.com/api")
+        .baseUrl("https://rickandmortyapi.com/api/")
         .addConverterFactory(gsonConverterFactory)
         .addCallAdapterFactory(coroutineCallAdapterFactory)
         .client(httpClient)
@@ -39,12 +40,22 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() = OkHttpClient.Builder()
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor
+    ) = OkHttpClient.Builder()
         .readTimeout(30, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS)
+        .addInterceptor(loggingInterceptor)
         .build()
 
     @Provides
     @Singleton
     fun provideCharacterApi(retrofit: Retrofit) = retrofit.create(CharacterApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideLoggingInterceptor() = HttpLoggingInterceptor()
+        .setLevel(HttpLoggingInterceptor.Level.BODY)
+
+
 }

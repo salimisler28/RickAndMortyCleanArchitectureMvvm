@@ -22,8 +22,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainBinding.bind(view)
 
-        navHostFragmentMainFragment = childFragmentManager
-            .findFragmentById(R.id.container_main_fragment) as NavHostFragment
+        navHostFragmentMainFragment =
+            childFragmentManager.findFragmentById(R.id.container_main_fragment) as NavHostFragment
         navControllerMainFragment = navHostFragmentMainFragment.navController
 
         val bottomNavigationView = binding?.bottomNavigationView

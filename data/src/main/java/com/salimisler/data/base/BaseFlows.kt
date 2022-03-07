@@ -25,3 +25,37 @@ fun <T> networkCall(
     Logger.e(it.localizedMessage)
     emit(Resource.error(Exception(it)))
 }
+
+fun <T> listenDatabase(
+    query: () -> Flow<T>
+): Flow<Resource<T>> = flow {
+    try {
+        val result = query.invoke().map { Resource.success(it) }
+        emitAll(result)
+    } catch (e: Exception) {
+        val error = e
+        emit(Resource.error(error))
+    }
+}.flowOn(Dispatchers.IO).onStart {
+    emit(Resource.loading())
+}.catch {
+    Logger.e(it.localizedMessage)
+    emit(Resource.error(Exception(it)))
+}
+
+fun updateDatabase(
+    query: suspend () -> Unit
+) = flow {
+    try {
+        query.invoke()
+        emit(Resource.success(Unit))
+    } catch (e: Exception) {
+        val error = e
+        emit(Resource.error(error))
+    }
+}.flowOn(Dispatchers.IO).onStart {
+    emit(Resource.loading())
+}.catch {
+    Logger.e(it.localizedMessage)
+    emit(Resource.error(Exception(it)))
+}

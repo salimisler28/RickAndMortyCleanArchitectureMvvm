@@ -46,4 +46,6 @@ dependencies {
     implementation(Dependencies.Implementation.coroutines)
     // Logger
     implementation(Dependencies.Implementation.logger)
+    // Paging 3
+    implementation(Dependencies.Implementation.paging)
 }

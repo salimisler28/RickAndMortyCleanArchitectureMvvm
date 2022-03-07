@@ -35,6 +35,9 @@ android {
         viewBinding = true
         dataBinding = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -52,6 +55,7 @@ dependencies {
 
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation(Dependencies.Implementation.ktxViewModel)
+    implementation(Dependencies.Implementation.ktxLifecycle)
 
     // Hilt
     implementation(Dependencies.Implementation.hilt)
@@ -61,4 +65,11 @@ dependencies {
     // Nav
     implementation(Dependencies.Implementation.navigation)
     implementation(Dependencies.Implementation.ktxNavigation)
+    // Epoxy
+    implementation(Dependencies.Implementation.epoxy)
+    implementation(Dependencies.Implementation.epoxyPaging)
+    kapt(Dependencies.Kapt.epoxy)
+    annotationProcessor(Dependencies.AnnotationProcessor.epoxy)
+    // Paging 3
+    implementation(Dependencies.Implementation.paging)
 }

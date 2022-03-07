@@ -17,11 +17,11 @@ class GetFilteredCharactersPagingDataSource @Inject constructor(
 
             val data = response.body()?.result.orEmpty()
             val prevPage = response.body()?.info?.prev
-            val nextPage = Uri.parse(response.body()?.info?.next).getQueryParameter("page")?.toInt()
+            val nextPage = Uri.parse(response.body()?.info?.next.toString()).getQueryParameter("page")?.toInt()
 
             LoadResult.Page(
                 data = data,
-                prevKey = prevPage,
+                prevKey = null,
                 nextKey = nextPage
             )
         } catch (e: Exception) {

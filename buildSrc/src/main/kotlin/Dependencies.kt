@@ -21,11 +21,18 @@ object Dependencies {
         const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
         const val ktxNavigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
         const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+        const val epoxy = "com.airbnb.android:epoxy:${Versions.epoxy}"
+        const val epoxyPaging = "com.airbnb.android:epoxy-paging3:${Versions.epoxyPaging}"
     }
 
     object Kapt {
         const val hilt = "com.google.dagger:hilt-compiler:${Versions.hilt}"
         const val room = "androidx.room:room-compiler:${Versions.room}"
+        const val epoxy = "com.airbnb.android:epoxy-processor:${Versions.epoxy}"
+    }
+
+    object AnnotationProcessor {
+        const val epoxy = "com.airbnb.android:epoxy-processor:${Versions.epoxy}"
     }
 
     object TestImplementation {
