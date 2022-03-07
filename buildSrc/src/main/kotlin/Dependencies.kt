@@ -23,6 +23,7 @@ object Dependencies {
         const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
         const val epoxy = "com.airbnb.android:epoxy:${Versions.epoxy}"
         const val epoxyPaging = "com.airbnb.android:epoxy-paging3:${Versions.epoxyPaging}"
+        const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     }
 
     object Kapt {

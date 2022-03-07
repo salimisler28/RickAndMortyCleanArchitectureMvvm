@@ -1,9 +1,10 @@
-package com.salimisler.rickandmortycleanmvvm
+package com.salimisler.rickandmortycleanmvvm.screen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.salimisler.rickandmortycleanmvvm.R
 import com.salimisler.rickandmortycleanmvvm.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -72,4 +72,6 @@ dependencies {
     annotationProcessor(Dependencies.AnnotationProcessor.epoxy)
     // Paging 3
     implementation(Dependencies.Implementation.paging)
+    // Glide
+    implementation(Dependencies.Implementation.glide)
 }

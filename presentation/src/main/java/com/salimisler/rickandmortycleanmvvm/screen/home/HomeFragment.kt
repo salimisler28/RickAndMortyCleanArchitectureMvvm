@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.salimisler.rickandmortycleanmvvm.R
 import com.salimisler.rickandmortycleanmvvm.base.BaseFragment
@@ -38,7 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     }
 
     private fun initRecyclerView() = binding.ervHome.apply {
-        layoutManager = LinearLayoutManager(requireContext())
+        layoutManager = GridLayoutManager(requireContext(), 2)
         adapter = controller.adapter
     }
 

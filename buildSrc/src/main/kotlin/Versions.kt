@@ -15,4 +15,5 @@ object Versions {
     const val navigation = "2.4.1"
     const val epoxy = "3.9.0"
     const val epoxyPaging = "4.6.4"
+    const val glide = "4.13.0"
 }
