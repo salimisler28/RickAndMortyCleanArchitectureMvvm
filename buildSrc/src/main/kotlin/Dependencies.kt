@@ -37,7 +37,13 @@ object Dependencies {
     }
 
     object TestImplementation {
-        const val junit = "junit:junit:4.+"
+        const val junit = "junit:junit:${Versions.junit}"
+        const val mockitoCore = "org.mockito:mockito-core:${Versions.mockitoCore}"
+        const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlin}"
+        const val mockk = "io.mockk:mockk:${Versions.mockk}"
+        const val truth = "com.google.truth:truth:${Versions.truth}"
+        const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineTest}"
+        const val turbine = "app.cash.turbine:turbine:0.7.0"
     }
 
     object AndroidTestImplementation {

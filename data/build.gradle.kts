@@ -36,23 +36,31 @@ android {
 }
 
 dependencies {
+    /** MODULES **/
     implementation(project(Modules.common))
+
+    /** TESTING **/
     // Junit
     testImplementation(Dependencies.TestImplementation.junit)
-    // Gson
-    implementation(Dependencies.Implementation.gson)
+    // Mockito
+    testImplementation(Dependencies.TestImplementation.mockitoCore)
+    testImplementation(Dependencies.TestImplementation.mockitoKotlin)
+    // mockk
+    testImplementation(Dependencies.TestImplementation.mockk)
+    // truth
+    testImplementation(Dependencies.TestImplementation.truth)
+    // coroutine
+    testImplementation(Dependencies.TestImplementation.coroutine)
+    // turbine
+    testImplementation(Dependencies.TestImplementation.turbine)
+
+
+    /** DI **/
     // Hilt
     implementation(Dependencies.Implementation.hilt)
     kapt(Dependencies.Kapt.hilt)
-    // Coroutines
-    implementation(Dependencies.Implementation.coroutines)
-    // Room
-    api(Dependencies.Implementation.room)
-    kapt(Dependencies.Kapt.room)
-    // Logger
-    implementation(Dependencies.Implementation.logger)
-    // Paging 3
-    implementation(Dependencies.Implementation.paging)
+
+    /** DATA **/
     //Retrofit
     api(Dependencies.Implementation.retrofit)
     api(Dependencies.Implementation.retrofitGsonConverter)
@@ -60,4 +68,16 @@ dependencies {
     //OkHttp3
     api(Dependencies.Implementation.okHttp)
     api(Dependencies.Implementation.okHttpLoggingInterceptor)
+    // Paging 3
+    implementation(Dependencies.Implementation.paging)
+    // Room
+    api(Dependencies.Implementation.room)
+    kapt(Dependencies.Kapt.room)
+    // Gson
+    implementation(Dependencies.Implementation.gson)
+
+    // Coroutines
+    implementation(Dependencies.Implementation.coroutines)
+    // Logger
+    implementation(Dependencies.Implementation.logger)
 }

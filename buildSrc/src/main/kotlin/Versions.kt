@@ -16,4 +16,10 @@ object Versions {
     const val epoxy = "3.9.0"
     const val epoxyPaging = "4.6.4"
     const val glide = "4.13.0"
+    const val junit = "4.+"
+    const val mockitoCore = "4.4.0"
+    const val mockitoKotlin = "4.0.0"
+    const val mockk = "1.12.3"
+    const val truth = "1.1.3"
+    const val coroutineTest = "1.5.1"
 }

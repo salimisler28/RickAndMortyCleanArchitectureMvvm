@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.salimisler.data.base.BaseException
+import kotlinx.coroutines.flow.collectLatest
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(@LayoutRes layoutRes: Int) :
     Fragment(layoutRes) {
@@ -25,8 +28,30 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(@LayoutRes lay
         return _binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        lifecycleScope.launchWhenCreated {
+            viewModel.baseLoadingSF.collectLatest {
+                when(it) {
+                    true -> showDialog()
+                    else -> hideDialog()
+                }
+            }
+        }
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.baseErrorSF.collectLatest {
+                it?.let { showError(it) }
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    abstract fun showDialog()
+    abstract fun hideDialog()
+    abstract fun showError(baseException: BaseException)
 }

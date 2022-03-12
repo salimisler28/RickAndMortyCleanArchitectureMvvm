@@ -1,6 +1,5 @@
 package com.salimisler.domain.usecase
 
-import android.util.Log
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
@@ -8,7 +7,7 @@ import com.salimisler.common.Resource
 import com.salimisler.data.network.dto.CharacterDto
 import com.salimisler.data.repository.CharacterRepository
 import com.salimisler.domain.base.BaseUseCase
-import com.salimisler.domain.mapper.CharacterUiModelMapper
+import com.salimisler.domain.mapper.dto.CharacterDtoMapper
 import com.salimisler.domain.model.CharacterUiModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
@@ -17,7 +16,7 @@ import javax.inject.Inject
 
 class GetAllCharactersPerPageUseCase @Inject constructor(
     private val charactersRepository: CharacterRepository,
-    private val characterUiModelMapper: CharacterUiModelMapper
+    private val characterDtoMapper: CharacterDtoMapper
 ) : BaseUseCase<GetAllCharactersPerPageUseCase.Params, PagingData<CharacterUiModel>>() {
     override fun invoke(params: Params): Flow<Resource<PagingData<CharacterUiModel>>> {
         val scope = params.scope
@@ -30,8 +29,8 @@ class GetAllCharactersPerPageUseCase @Inject constructor(
                             .cachedIn(scope)
                             .flatMapMerge {
                                 val mapped = it.map {
-                                    characterUiModelMapper.map(
-                                        CharacterUiModelMapper.Params(
+                                    characterDtoMapper.map(
+                                        CharacterDtoMapper.Params(
                                             dto = it,
                                             favList = _favListResource.data
                                         )

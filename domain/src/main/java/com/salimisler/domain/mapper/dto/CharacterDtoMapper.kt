@@ -1,4 +1,4 @@
-package com.salimisler.domain.mapper
+package com.salimisler.domain.mapper.dto
 
 import android.util.Log
 import com.salimisler.data.database.entity.FavEntity
@@ -7,8 +7,8 @@ import com.salimisler.domain.base.BaseMapper
 import com.salimisler.domain.model.CharacterUiModel
 import javax.inject.Inject
 
-class CharacterUiModelMapper @Inject constructor(
-) : BaseMapper<CharacterUiModelMapper.Params, CharacterUiModel>() {
+class CharacterDtoMapper @Inject constructor(
+) : BaseMapper<CharacterDtoMapper.Params, CharacterUiModel>() {
     override fun map(params: Params): CharacterUiModel {
         val dto = params.dto
         val favList = params.favList
@@ -17,13 +17,7 @@ class CharacterUiModelMapper @Inject constructor(
         val model = CharacterUiModel(
             id = dto?.id ?: -1,
             name = dto?.name ?: "",
-            status = dto?.status ?: "",
-            species = dto?.species ?: "",
-            gender = dto?.gender ?: "",
             image = dto?.image ?: "",
-            episode = dto?.episode ?: listOf(),
-            url = dto?.url ?: "",
-            created = dto?.created ?: "",
             isFav = isFav,
         )
         Log.d("denemeke", model.toString())

@@ -6,8 +6,9 @@ import androidx.paging.PagingState
 import com.salimisler.data.network.api.CharacterApi
 import com.salimisler.data.network.dto.CharacterDto
 import java.lang.Exception
+import javax.inject.Inject
 
-class GetAllCharacterPagingDataSource constructor(
+class GetAllCharacterPagingDataSource @Inject constructor(
     private val rickAndMortyApi: CharacterApi
 ) : PagingSource<Int, CharacterDto>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterDto> {

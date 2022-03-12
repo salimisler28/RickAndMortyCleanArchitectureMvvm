@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.salimisler.data.base.BaseException
 import com.salimisler.rickandmortycleanmvvm.R
 import com.salimisler.rickandmortycleanmvvm.base.BaseFragment
 import com.salimisler.rickandmortycleanmvvm.databinding.FragmentHomeBinding
@@ -26,13 +28,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        controller.fragment = this
         initRecyclerView()
+        initListeners()
         initFlows()
+    }
+
+    private fun initListeners() {
+        controller.onFavClickListener = {
+            if (it?.isFav == false) viewModel.insertFav(it.id)
+        }
     }
 
     private fun initFlows() {
         lifecycleScope.launch {
-            viewModel.characters.collect {
+            viewModel.charactersSF.collect {
                 it?.let { controller.submitData(it) }
             }
         }
@@ -41,6 +51,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     private fun initRecyclerView() = binding.ervHome.apply {
         layoutManager = GridLayoutManager(requireContext(), 2)
         adapter = controller.adapter
+    }
+
+    override fun showDialog() {
+
+    }
+
+    override fun hideDialog() {
+
+    }
+
+    override fun showError(baseException: BaseException) {
+
     }
 
 }

@@ -1,8 +1,9 @@
 plugins {
-    id("com.android.application")
+    id(Plugins.application)
     id(Plugins.kotlin)
     id(Plugins.kapt)
     id(Plugins.hilt)
+    id(Plugins.remal) version "1.5.0"
 }
 
 android {

@@ -11,5 +11,6 @@ class FavRoomDataSource @Inject constructor(
 ) {
     fun insertFav(favEntity: FavEntity) = updateDatabase { favDao.insertFav(favEntity) }
     fun deleteFav(id: Int) = updateDatabase { favDao.deleteFav(id) }
-    fun listenFavs() = listenDatabase { favDao.listenFavs() }
+    fun listenFavs() = listenDatabase { favDao.listenFavsPerPage() }
+    fun listenFavCount() = listenDatabase { favDao.listenFavCount() }
 }

@@ -5,6 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "favs")
 data class FavEntity(
-    @PrimaryKey(autoGenerate = false) val id: Int,
-    val created_at: String
+    @PrimaryKey(autoGenerate = true) val id: Int?,
+    val charId: Int,
+    val createdAt: String,
+    val name: String? = null,
+    val image: String? = null
 )
